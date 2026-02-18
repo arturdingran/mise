@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>蜜色视频直播 Demo</title>
+</head>
+<body>
+  <h1>蜜色视频直播 SDK Demo</h1>
+
+  <input id="room" placeholder="Room ID">
+  <input id="user" placeholder="Username">
+  <button onclick="joinRoom()">Join</button>
+
+  <br><br>
+
+  <input id="msg" placeholder="Message">
+  <button onclick="sendMsg()">Send</button>
+
+  <script src="../sdk/mise-live-sdk.js"></script>
+  <script>
+    const sdk = new MiseLiveSDK("ws://localhost:9100");
+    sdk.connect();
+
+    function joinRoom() {
+      sdk.joinRoom(
+        document.getElementById("room").value,
+        document.getElementById("user").value
+      );
+    }
+
+    function sendMsg() {
+      sdk.sendMessage(document.getElementById("msg").value);
+    }
+  </script>
+</body>
+</html>
